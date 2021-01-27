@@ -40,7 +40,7 @@ func run() error {
 	flag.Parse()
 	rand.Seed(time.Now().UTC().UnixNano())
 
-	done := make(chan struct{})
+	done := make(chan struct{}) // for stopping our loadingAnimation func.
 	go loadingAnimation("Searching and setting wallpaper", done)
 
 	img, err := searchImg(query)
@@ -63,6 +63,7 @@ func run() error {
 	return nil
 }
 
+// searchImg returns random photo from search result.
 func searchImg(query string) (*photo, error) {
 	sr, err := search(query)
 	if err != nil {
@@ -74,6 +75,8 @@ func searchImg(query string) (*photo, error) {
 	return &img, nil
 }
 
+// search returns random page of search result,
+// which contains photos filtered by query.
 func search(query string) (*searchResult, error) {
 	urlpath := fmt.Sprintf(
 		"%s?orientation=%s&per_page=%d&size=%s&query=%s",
@@ -84,9 +87,16 @@ func search(query string) (*searchResult, error) {
 	maxPage := 100
 	client := http.DefaultClient
 	for len(sr.Photos) == 0 {
-		pageNum := randomInt(1, maxPage)
+		// in first iteration random page
+		// will be between [1, 100).
+		var page int
+		if maxPage == 1 {
+			page = maxPage
+		} else {
+			page = randomInt(1, maxPage)
+		}
 
-		pageURL := fmt.Sprintf("%s&page=%d", urlpath, pageNum)
+		pageURL := fmt.Sprintf("%s&page=%d", urlpath, page)
 		req, err := http.NewRequest("GET", pageURL, nil)
 		if err != nil {
 			return nil, err
@@ -108,14 +118,16 @@ func search(query string) (*searchResult, error) {
 			return nil, err
 		}
 
+		// check if response has any error
 		if err := sr.Err(); err != nil {
 			return nil, err
 		}
 
-		if sr.TotalResults == 0 {
+		switch res := sr.TotalResults; {
+		case res == 0:
 			return nil, fmt.Errorf("could not find any photo with these key-words: %s", query)
-		} else {
-			maxPage = max(sr.TotalResults/perPage, 2)
+		default:
+			maxPage = max(res/perPage, 1)
 		}
 	}
 

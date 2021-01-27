@@ -13,11 +13,12 @@ func max(a, b int) int {
 	return b
 }
 
-// Returns an int >= min, < max
+// randomInt returns an int >= min, < max.
 func randomInt(min, max int) int {
 	return min + rand.Intn(max-min)
 }
 
+// loadingAnimation prints msg once and new dot every second.
 func loadingAnimation(msg string, done chan struct{}) {
 	fmt.Print(msg)
 
