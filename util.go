@@ -26,7 +26,7 @@ func loadingAnimation(msg string, done chan struct{}) {
 		select {
 		case <-done:
 			return
-		case <-time.Tick(1 * time.Second):
+		case <-time.Tick(time.Second):
 			fmt.Print(".")
 		}
 	}

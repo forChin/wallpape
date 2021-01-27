@@ -118,7 +118,7 @@ func search(query string) (*searchResult, error) {
 			return nil, err
 		}
 
-		// check if response has any error
+		// check if response has any errors.
 		if err := sr.Err(); err != nil {
 			return nil, err
 		}
