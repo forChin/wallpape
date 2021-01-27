@@ -87,6 +87,14 @@ func search(query string) (*searchResult, error) {
 	maxPage := 100
 	client := http.DefaultClient
 	for len(sr.Photos) == 0 {
+		// This loop will iterate 1-2 times,
+		// because at the first iteration we randomly choose
+		// page between [1, 100), which can be bigger than
+		// the last page of search result. But in second iteration we know
+		// number of total results from the first request,
+		// so we choose page between 1 and
+		// number of total pages (totalResult/perPage).
+
 		// In first iteration random page
 		// will be between [1, 100).
 		var page int
@@ -127,6 +135,8 @@ func search(query string) (*searchResult, error) {
 		case res == 0:
 			return nil, fmt.Errorf("could not find any photo with these key-words: %s", query)
 		default:
+			// If number of results != 0,
+			// at least there will be 1 page.
 			maxPage = max(res/perPage, 1)
 		}
 	}
