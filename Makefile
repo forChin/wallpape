@@ -1,4 +1,4 @@
-EXE=wallpaper-changer
+EXE=wallpape
 
 build:
 	go build -o $(EXE)
