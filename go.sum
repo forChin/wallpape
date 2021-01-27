@@ -1,0 +1,7 @@
+github.com/reujab/wallpaper v0.0.0-20201124162023-c3898ec30d2c h1:NTQfVoKIaC5s9/SBbgt5r8S7zMPpkwsBsebiCMZKGFQ=
+github.com/reujab/wallpaper v0.0.0-20201124162023-c3898ec30d2c/go.mod h1:Xb+5YBsfhPxSJOGF7b4UTZIOxRIg0Lh/FnRJQm5GPJY=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/ini.v1 v1.62.0 h1:duBzk771uxoUuOlyRLkHsygud9+5lrlGjdFBb4mSKDU=
+gopkg.in/ini.v1 v1.62.0/go.mod h1:pNLf8WUiyNEtQjuu5G5vTm06TEv9tsIgeAvK8hOrP4k=
+gopkg.in/yaml.v2 v2.4.0 h1:D8xgwECY7CYvx+Y2n4sBz93Jn9JRvxdiyyo8CTfuKaY=
+gopkg.in/yaml.v2 v2.4.0/go.mod h1:RDklbk79AGWmwhnvt/jBztapEOGDOx6ZbXqjP6csGnQ=
