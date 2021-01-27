@@ -40,7 +40,7 @@ func run() error {
 	flag.Parse()
 	rand.Seed(time.Now().UTC().UnixNano())
 
-	done := make(chan struct{}) // for stopping our loadingAnimation func.
+	done := make(chan struct{}) // for stopping our loadingAnimation func
 	go loadingAnimation("Searching and setting wallpaper", done)
 
 	img, err := searchImg(query)
@@ -87,7 +87,7 @@ func search(query string) (*searchResult, error) {
 	maxPage := 100
 	client := http.DefaultClient
 	for len(sr.Photos) == 0 {
-		// in first iteration random page
+		// In first iteration random page
 		// will be between [1, 100).
 		var page int
 		if maxPage == 1 {
@@ -118,7 +118,7 @@ func search(query string) (*searchResult, error) {
 			return nil, err
 		}
 
-		// check if response has any errors.
+		// Check if response has any errors.
 		if err := sr.Err(); err != nil {
 			return nil, err
 		}
