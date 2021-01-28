@@ -19,6 +19,6 @@ You can also specify query for your wallpaper by using `-q` flag.
 Photo is randomly selected and downloaded to the cache directory, which, according to your platform, will be:
 - **Linux**: ~/.cache
 - **Windows**: the first non-empty value from `%TMP%`, `%TEMP%`, `%USERPROFILE%`, or the Windows directory
-- **MacOS**: ~/Library/Caches
+- **macOS**: ~/Library/Caches
 
 All photos provided by [Pexels](https://www.pexels.com).
