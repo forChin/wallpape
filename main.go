@@ -26,7 +26,7 @@ const (
 var query string
 
 func init() {
-	flag.StringVar(&query, "q", "wallpaper", "key-words for searching wallpaper")
+	flag.StringVar(&query, "q", "wallpaper", "query for searching wallpaper")
 }
 
 func main() {
