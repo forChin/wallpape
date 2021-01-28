@@ -133,7 +133,7 @@ func search(query string) (*searchResult, error) {
 
 		switch res := sr.TotalResults; {
 		case res == 0:
-			return nil, fmt.Errorf("could not find any photo with these key-words: %s", query)
+			return nil, fmt.Errorf("could not find any photo with these query: %s", query)
 		default:
 			// If number of results != 0,
 			// at least there will be 1 page.
