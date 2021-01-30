@@ -9,6 +9,8 @@ To build use the Makefile.
 make build
 ```
 
+Or use executables in [out folder](https://github.com/forChin/wallpape/tree/main/out).
+
 Just start by running `wallpape` binary.
 You can also specify query for your wallpaper by using `-q` flag.
 ```
